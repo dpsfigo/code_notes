@@ -4,8 +4,12 @@ import torch
 from torchvision.models import AlexNet
 from torchviz import make_dot
 
-# x=torch.rand(8,3,256,512)
-# model=AlexNet()
+x=torch.rand(1,3,256,256)
+model=AlexNet()
+import hiddenlayer as h
+vis_graph = h.build_graph(model, torch.zeros([1 ,3, 256, 256]))   # 获取绘制图像的对象
+vis_graph.theme = h.graph.THEMES["blue"].copy()     # 指定主题颜色
+vis_graph.save("./demo1.png")   # 保存图像的路径
 # y=model(x)
 
 # # 这三种方式都可以
@@ -21,7 +25,8 @@ from torchviz import make_dot
  
 import torch
 import tensorwatch as tw
-from lanenet_model.blocks import ESPNet_Encoder # 这是我自己定义的一个网络
+from torchvision.models import AlexNet
+#from lanenet_model.blocks import ESPNet_Encoder # 这是我自己定义的一个网络
  
 # 其实就两句话
 model=AlexNet()
